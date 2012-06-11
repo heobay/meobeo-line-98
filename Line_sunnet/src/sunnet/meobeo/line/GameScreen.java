@@ -1,9 +1,6 @@
 package sunnet.meobeo.line;
 
 import java.util.List;
-
-import android.util.Log;
-
 import sunnet.meobeo.framework.Game;
 import sunnet.meobeo.framework.Graphics;
 import sunnet.meobeo.framework.Input.KeyEvent;
@@ -81,22 +78,22 @@ public class GameScreen extends Screen {
 
 		if (state == GameState.Running) {
 			updateRunning(touchEvents);
-//			Log.d("update", "time");
+			// Log.d("update", "time");
 		}
 		if (state == GameState.GameOver)
 			updateGameOver(touchEvents);
 
-//		int lenKey = keyEvents.size();
-//		for (i = 0; i < lenKey; i++) {
-//			eventKey = keyEvents.get(i);
-//			if (event.type == KeyEvent.KEY_DOWN) {
-//				if (eventKey.keyCode == android.view.KeyEvent.KEYCODE_BACK) {
-//					// saveSettings();
-//					System.gc();
-//					return;
-//				}
-//			}
-//		}
+		// int lenKey = keyEvents.size();
+		// for (i = 0; i < lenKey; i++) {
+		// eventKey = keyEvents.get(i);
+		// if (event.type == KeyEvent.KEY_DOWN) {
+		// if (eventKey.keyCode == android.view.KeyEvent.KEYCODE_BACK) {
+		// // saveSettings();
+		// System.gc();
+		// return;
+		// }
+		// }
+		// }
 
 	}
 
@@ -111,10 +108,7 @@ public class GameScreen extends Screen {
 					if (!firstClick) {
 						tempRow = (event.y - OY) / height_ball;
 						tempCol = (event.x - OX) / width_ball;
-						// Log.d("temp",""+tempRow+", "+tempCol);
-						// Log.d("event","event.x "+event.x+" event.y "+event.y);
 						if (mainBoard.board[tempRow][tempCol] > 0) {
-							Log.d("src", "time");
 							srcCol = tempCol;
 							srcRow = tempRow;
 							firstClick = true;
@@ -136,7 +130,6 @@ public class GameScreen extends Screen {
 									srcCol);
 							if (mainBoard.findWay) {
 								chooseBall.sliding = true;
-								Log.d("sliding", "time");
 								firstClick = false;
 
 								mainBoard.undo = true;
@@ -554,7 +547,7 @@ public class GameScreen extends Screen {
 			g.drawPixmap(Assets.phi_thuong, 134, 900);
 			break;
 		default:
-			if(countPoint >= 19)
+			if (countPoint >= 19)
 				g.drawPixmap(Assets.gioi_vai, 134, 900);
 			break;
 		}
@@ -595,7 +588,7 @@ public class GameScreen extends Screen {
 		srcCol = -1;
 		if (mainBoard.checkPoint(desRow, desCol)) {
 			if (Settings.soundEnable)
-				Assets.tiengno.play(1);
+				soundPoint();
 			bong_no = true;
 			color = mainBoard.board[desRow][desCol];
 			for (i = 0; i <= mainBoard.countPoint; i++) {
@@ -618,7 +611,7 @@ public class GameScreen extends Screen {
 					mainBoard.board[tempRow][tempCol] *= -1;
 					if (mainBoard.checkPoint(tempRow, tempCol)) {
 						if (Settings.soundEnable)
-							Assets.tiengno.play(1);
+							soundPoint();
 						bong_no = true;
 						color = mainBoard.board[tempRow][tempCol];
 						for (i = 0; i <= mainBoard.countPoint; i++) {
@@ -643,6 +636,25 @@ public class GameScreen extends Screen {
 			}
 
 		}
+	}
+
+	public void soundPoint() {
+		if (countPoint < 7) {
+			Assets.boom1.play(1);
+			return;
+		}
+		if (countPoint < 10) {
+			Assets.boom2.play(1);
+			Assets.clap.play(1);
+			return;
+		}
+		if (countPoint < 14) {
+			Assets.boom3.play(1);
+			Assets.clap.play(1);
+			return;
+		}
+		Assets.boom4.play(1);
+		Assets.clap.play(1);
 	}
 
 	@Override

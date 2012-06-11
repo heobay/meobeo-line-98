@@ -34,7 +34,6 @@ public class LoadingScreen extends Screen{
 		Assets.bong_no = g.newPixmap("bong_no.png", PixmapFormat.ARGB8888);
 
 /* hight score */
-		Assets.hight_score = g.newPixmap("hight_score.jpg", PixmapFormat.ARGB8888);
 		Assets.ok_click = g.newPixmap("ok_click.png", PixmapFormat.ARGB8888);
 		
 /* game over */
@@ -63,11 +62,15 @@ public class LoadingScreen extends Screen{
 		
 /* am thanh */
 		Assets.move = game.getAudio().newSound("move.mp3");
-		Assets.tiengno = game.getAudio().newSound("tiengno.wav");
+		Assets.boom1 = game.getAudio().newSound("boom1.mp3");
+		Assets.boom2 = game.getAudio().newSound("boom2.mp3");
+		Assets.boom3 = game.getAudio().newSound("boom3.wav");
+		Assets.boom4 = game.getAudio().newSound("boom4.wav");
 		Assets.touch = game.getAudio().newSound("touch.mp3");
 		Assets.gameOver = game.getAudio().newSound("gameOver.mp3");
+		Assets.clap = game.getAudio().newSound("clap.mp3");
 		
-		Settings.load(game.getFileIO());
+		Settings.load(game.getFileIO());		
 		game.setScreen(new MainMenuScreen(game));
 	}
 

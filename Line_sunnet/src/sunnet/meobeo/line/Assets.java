@@ -41,8 +41,12 @@ public class Assets {
 	/* am thanh */
 	public static Sound gameOver;
 	public static Sound touch;
-	public static Sound tiengno;
+	public static Sound boom1;
+	public static Sound boom2;
+	public static Sound boom3;
+	public static Sound boom4;
 	public static Sound move;
+	public static Sound clap;
 	
 	/* danh hieu */
 	public static Pixmap ga_mo;

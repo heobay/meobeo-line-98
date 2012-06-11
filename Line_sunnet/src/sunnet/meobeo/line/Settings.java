@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
+import android.util.Log;
+
 import sunnet.meobeo.framework.FileIO;
 
 public class Settings {
@@ -24,9 +26,10 @@ public class Settings {
 			in = new BufferedReader(new InputStreamReader(
 					files.readFile(".line")));
 			soundEnable = Boolean.parseBoolean(in.readLine());
-//			for (int i = 0; i < 5; i++) {
-//				highscores[i] = Integer.parseInt(in.readLine());
-//			}
+			Log.d("doc duoc","blank");
+			// for (int i = 0; i < 5; i++) {
+			// highscores[i] = Integer.parseInt(in.readLine());
+			// }
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (NumberFormatException e) {
@@ -47,11 +50,11 @@ public class Settings {
 			out = new BufferedWriter(new OutputStreamWriter(
 					files.writeFile(".line")));
 			out.write(Boolean.toString(soundEnable));
-//			out.write("\n");
-//			for (int i = 0; i < 5; i++) {
-//				out.write(Integer.toString(highscores[i]));
-//				out.write("\n");
-//			}
+			 out.write("\n");
+			// for (int i = 0; i < 5; i++) {
+			// out.write(Integer.toString(highscores[i]));
+			// out.write("\n");
+			// }
 		} catch (IOException e) {
 
 		} finally {

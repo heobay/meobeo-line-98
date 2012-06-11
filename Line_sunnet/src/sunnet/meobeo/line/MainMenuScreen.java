@@ -2,11 +2,13 @@ package sunnet.meobeo.line;
 
 import java.util.List;
 
+import android.content.Intent;
 import sunnet.meobeo.framework.Game;
 import sunnet.meobeo.framework.Graphics;
 import sunnet.meobeo.framework.Input.KeyEvent;
 import sunnet.meobeo.framework.Input.TouchEvent;
 import sunnet.meobeo.framework.Screen;
+import sunnet.meobeo.framework.impl.AndroidGame;
 
 public class MainMenuScreen extends Screen {
 	private int button_press;
@@ -51,6 +53,8 @@ public class MainMenuScreen extends Screen {
 				}
 				if (button_press == 3) {
 					button_press = 0;
+					Intent intent = new Intent((AndroidGame)this.game, Option.class);
+					((AndroidGame)this.game).startActivity(intent);
 					return;
 				}
 			}

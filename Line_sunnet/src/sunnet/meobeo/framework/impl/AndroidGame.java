@@ -23,7 +23,7 @@ public class AndroidGame extends Activity implements Game {
 	Graphics graphics;
 	Audio audio;
 	Input input;
-	FileIO fileIO;
+	public static FileIO fileIO;
 	Screen screen;
 	WakeLock wakeLock;
 	Typeface mFace;
